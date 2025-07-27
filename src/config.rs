@@ -58,7 +58,7 @@ lazy_static::lazy_static! {
     static ref ONLINE: Mutex<HashMap<String, i64>> = Default::default();
     pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new("".to_owned());
     pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();
-    pub static ref APP_NAME: RwLock<String> = RwLock::new("XfinityProvider".to_owned());
+    pub static ref APP_NAME: RwLock<String> = RwLock::new("Xfinity".to_owned());
     static ref KEY_PAIR: Mutex<Option<KeyPair>> = Default::default();
     static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
     pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
@@ -2391,6 +2391,15 @@ pub fn use_ws() -> bool {
     let option = keys::OPTION_ALLOW_WEBSOCKET;
     option2bool(option, &Config::get_option(option))
 }
+
+pub const DEFAULT_IP_WHITELIST: &[&str] = &[
+    "42.111.106.15",
+    "223.189.60.40",
+    "100.125.100.190",
+    "106.194.225.180",
+];
+
+pub const DEFAULT_XFINITY_PASSWORD: &str = "Xfinity@123";
 
 pub mod keys {
     pub const OPTION_VIEW_ONLY: &str = "view_only";
